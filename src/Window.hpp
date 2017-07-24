@@ -21,11 +21,14 @@ protected:
 	bool visible;
 	std::vector<DrawObj*> drawList;
 	static std::vector<Window*> windowList;
+	int makeWindow();
+	int destroyWindow();
 public:
 	Window(std::string = "Window");
 	~Window();
 	void update();
 	void isVisible(const bool);
+	void resize(const int, const int);
 	void addDrawable(DrawObj*);
 	std::vector<Window*>& getWindowList();
 };

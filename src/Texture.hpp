@@ -21,6 +21,7 @@ protected:
 public:
 	TextureSize getTextureSize();
 	int createTexture(SDL_Renderer*);
+	int destroyTexture();
 	void updateTextureSize();
 	Texture(std::string);
 	~Texture();

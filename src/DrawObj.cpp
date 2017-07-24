@@ -1,5 +1,6 @@
-#include "DrawObj.hpp"
 #include <string>
+#include "Texture.hpp"
+#include "DrawObj.hpp"
 
 DrawObj::DrawObj(std::string path) : Texture(path),
 		xPosDraw(0),
@@ -10,7 +11,3 @@ DrawObj::DrawObj(std::string path) : Texture(path),
 
 void DrawObj::setRenderer(SDL_Renderer* renderer) { this->renderer = renderer; }
 
-void DrawObj::draw()
-{
-	
-}
