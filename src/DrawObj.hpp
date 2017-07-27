@@ -18,6 +18,8 @@ public:
 	~DrawObj();
 	void setRenderer(SDL_Renderer*);
 	void draw();
+	void moveRel(int i, int j);
+	void moveAbs(int i, int j);
 };
 
 #endif // _DRAWOBJ_HPP

@@ -22,3 +22,15 @@ void DrawObj::draw()
 	SDL_Rect destRect {widthDraw, heightDraw, (int) textureW, (int) textureH};
 	SDL_RenderCopy(renderer, this->texture, NULL, &destRect);
 }
+
+void DrawObj::moveRel(int i, int j)
+{
+	xPosDraw += i;
+	yPosDraw += j;
+}
+
+void DrawObj::moveAbs(int i, int j)
+{
+	xPosDraw = i;
+	yPosDraw = j;
+}
