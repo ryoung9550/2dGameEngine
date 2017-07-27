@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <cstdio>
 
+std::map<unsigned, GeObj*> GeObj::objList;
+
 GeObj::GeObj() 
 {
 	srand(time(0));
@@ -25,5 +27,5 @@ GeObj::~GeObj()
 
 std::map<unsigned, GeObj*>& GeObj::getIdList()
 {
-	return objList;
+	return this->objList;
 }

@@ -4,20 +4,19 @@
 
 #include <SDL2/SDL.h>
 
-int main(int /*argc*/, char** /*argv*/)
+int main(int /*argc*/, char** argv)
 {
+	SDL_Init(SDL_INIT_EVERYTHING);
 	{
-		ge::init();
 
 		Window win;
-		DrawObj thing1("textures/texture1.bmp");
-		win.addDrawable(&thing1);
+		DrawObj thing1("test/thing1.bmp");
 		win.isVisible(true);
 	
 		for (int i = 0; i < 5000; ++i) {
 			win.update();
 		}
 	}	
-	ge::quit();	
+	SDL_Quit();
 	return 0;
 }

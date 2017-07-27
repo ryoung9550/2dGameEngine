@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+std::vector<Window*> Window::windowList;
+
 Window::Window(std::string title) : title(title),
 	xPos(SDL_WINDOWPOS_UNDEFINED),
 	yPos(SDL_WINDOWPOS_UNDEFINED),
@@ -38,7 +40,7 @@ int Window::makeWindow()
 				height,
 				0);
 	renderer = SDL_CreateRenderer(window, -1, 0);
-	for (auto it drawList.begin(); it != drawList.end(); it++) {
+	for (auto it = drawList.begin(); it != drawList.end(); it++) {
 		addDrawable(*it);
 	}
 	return !(renderer && window);

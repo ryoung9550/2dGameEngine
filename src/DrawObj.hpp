@@ -17,7 +17,7 @@ public:
 	DrawObj(std::string);
 	~DrawObj();
 	void setRenderer(SDL_Renderer*);
-	virtual void draw();
+	void draw();
 };
 
 #endif // _DRAWOBJ_HPP
