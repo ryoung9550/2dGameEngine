@@ -6,22 +6,37 @@
 
 std::vector<Window*> Window::windowList;
 
-Window::Window(std::string title) : title(title),
+Window::Window(std::string title) : window(nullptr),
+	renderer(nullptr),
+	title(title),
 	xPos(SDL_WINDOWPOS_UNDEFINED),
 	yPos(SDL_WINDOWPOS_UNDEFINED),
-	width(0),
-	height(0) {} 
+	width(200),
+	height(200),
+	visible(false),
+	running(true) 
+{
+} 
 
 Window::~Window()
 {
 	SDL_DestroyWindow(window);
+	SDL_DestroyRenderer(renderer);
 }
 
 void Window::update() 
 {
 	if (window) {
+		SDL_RenderClear(renderer);
 		for (auto it = drawList.begin(); it != drawList.end(); it++) {
 			(*it)->draw();
+		}
+		SDL_RenderPresent(renderer);
+		SDL_Event e;
+		while (SDL_PollEvent(&e)) {
+			if (e.type == SDL_QUIT) {
+				running = false;
+			}
 		}
 	} else {
 		if (visible) {
@@ -72,5 +87,7 @@ void Window::addDrawable(DrawObj* drawable)
 	drawable->createTexture(renderer);
 	drawList.push_back(drawable);
 }
+
+bool Window::isRunning() { return running; }
 
 std::vector<Window*>& Window::getWindowList() { return windowList; }
