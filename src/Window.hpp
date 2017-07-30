@@ -19,6 +19,7 @@ protected:
 	int width;
 	int height;
 	bool visible;
+	bool running;
 	std::vector<DrawObj*> drawList;
 	static std::vector<Window*> windowList;
 	int makeWindow();
@@ -30,6 +31,7 @@ public:
 	void isVisible(const bool);
 	void resize(const int, const int);
 	void addDrawable(DrawObj*);
+	bool isRunning();
 	std::vector<Window*>& getWindowList();
 };
 

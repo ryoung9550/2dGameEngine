@@ -9,24 +9,36 @@ std::vector<Window*> Window::windowList;
 Window::Window(std::string title) : title(title),
 	xPos(SDL_WINDOWPOS_UNDEFINED),
 	yPos(SDL_WINDOWPOS_UNDEFINED),
-	width(0),
-	height(0) {} 
+	width(200),
+	height(200),
+	visible(false),
+	running(true) {}
 
-Window::~Window()
-{
+Window::~Window() {
 	SDL_DestroyWindow(window);
 }
 
 void Window::update() 
 {
-	if (window) {
+	if (window && visible) {
+		
+		SDL_Event e;
+		if (SDL_PollEvent(&e)) {
+			if (e.type == SDL_QUIT) {
+				
+			}
+		}
+
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		SDL_RenderClear(renderer);
 		for (auto it = drawList.begin(); it != drawList.end(); it++) {
 			(*it)->draw();
 		}
+		SDL_RenderPresent(renderer);
 	} else {
 		if (visible) {
-			if (makeWindow())
-				visible = false;
+			if (makeWindow()) // If there was a problem making the window
+				visible = false; // Reset visible
 		}
 	}
 }
@@ -46,6 +58,8 @@ int Window::makeWindow()
 	return !(renderer && window);
 }
 
+bool Window::isRunning() { return running; }
+
 int Window::destroyWindow()
 {
 	visible = false;
@@ -63,8 +77,10 @@ void Window::resize(const int width, const int height)
 {
 	this->width = width;
 	this->height = height;
-	destroyWindow();
-	makeWindow();
+	if (visible) {
+		destroyWindow();
+		makeWindow();
+	}
 }
 
 void Window::addDrawable(DrawObj* drawable)
