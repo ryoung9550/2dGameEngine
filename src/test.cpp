@@ -1,12 +1,12 @@
 #include "GeInit.hpp"
 #include "Window.hpp"
 #include "DrawObj.hpp"
-
+#include "GeInit.hpp"
 #include <SDL2/SDL.h>
 
 int main(int /*argc*/, char** /*argv*/)
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
+	ge::init();
 	{
 
 		Window win;
@@ -17,7 +17,7 @@ int main(int /*argc*/, char** /*argv*/)
 		while (win.isRunning()) {
 			win.update();
 		}
-	}	
-	SDL_Quit();
+	} // Body end so window is destroyed before ge::quit()
+	ge::quit();
 	return 0;
 }

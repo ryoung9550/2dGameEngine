@@ -6,6 +6,7 @@
 namespace ge {
 
 int init();
+int quit();
 
 } // namespace ge
 
