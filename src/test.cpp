@@ -11,7 +11,6 @@ int main(int /*argc*/, char** /*argv*/)
 
 		Window win;
 		win.isVisible(true);
-		win.update();
 		DrawObj thing1("thing1.bmp");
 		win.addDrawable(&thing1);
 	

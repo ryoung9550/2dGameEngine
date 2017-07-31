@@ -25,6 +25,7 @@ void Texture::updateTextureSize()
 
 int Texture::createTexture(SDL_Renderer* renderer)
 {
+	this->renderer = renderer;
 	texture = SDL_CreateTextureFromSurface(renderer, bitMap);
 	return !texture;
 }
@@ -35,7 +36,7 @@ int Texture::destroyTexture()
 	return !!texture;
 }
 
-Texture::Texture(std::string path) : texturePath(path) 
+Texture::Texture(std::string path) : texturePath(path), renderer(nullptr)
 {
 	bitMap = SDL_LoadBMP(texturePath.c_str());
 	updateTextureSize();

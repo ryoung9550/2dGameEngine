@@ -7,7 +7,7 @@
 
 struct TextureSize
 {
-	unsigned w, h;
+	int w, h;
 };
 
 class Texture : public GeObj
@@ -15,9 +15,10 @@ class Texture : public GeObj
 protected:
 	SDL_Texture *texture;
 	SDL_Surface *bitMap;
-	unsigned textureW;
-	unsigned textureH;
+	int textureW;
+	int textureH;
 	std::string texturePath;
+	SDL_Renderer *renderer;
 public:
 	TextureSize getTextureSize();
 	int createTexture(SDL_Renderer*);

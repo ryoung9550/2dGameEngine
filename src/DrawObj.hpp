@@ -12,7 +12,6 @@ protected:
 	int yPosDraw;
 	int widthDraw;
 	int heightDraw;
-	SDL_Renderer* renderer;
 public:
 	DrawObj(std::string);
 	~DrawObj();

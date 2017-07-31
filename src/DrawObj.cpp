@@ -1,14 +1,14 @@
-#include <string>
 #include "Texture.hpp"
 #include "DrawObj.hpp"
 #include <SDL2/SDL.h>
+#include <string>
+#include <iostream>
 
 DrawObj::DrawObj(std::string path) : Texture(path),
 		xPosDraw(0),
 		yPosDraw(0),
 		widthDraw(textureW),
-		heightDraw(textureH),
-		renderer(nullptr) {}
+		heightDraw(textureH) {}
 	
 DrawObj::~DrawObj()
 {
@@ -19,8 +19,9 @@ void DrawObj::setRenderer(SDL_Renderer* renderer) { this->renderer = renderer; }
 
 void DrawObj::draw() 
 {
-	SDL_Rect destRect {widthDraw, heightDraw, (int) textureW, (int) textureH};
-	SDL_RenderCopy(renderer, this->texture, NULL, &destRect);
+	SDL_Rect destRect {xPosDraw, yPosDraw, widthDraw, heightDraw};
+	std::cout << destRect.x << ' ' << destRect.y << ' ' << destRect.w << ' ' << destRect.h << '\n';
+	SDL_RenderCopy(renderer, texture, NULL, &destRect);
 }
 
 void DrawObj::moveRel(int i, int j)

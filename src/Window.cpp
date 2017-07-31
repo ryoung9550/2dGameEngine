@@ -28,17 +28,19 @@ Window::~Window()
 void Window::update() 
 {
 	if (window) {
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // fill background with black
 		SDL_RenderClear(renderer);
-		for (auto it = drawList.begin(); it != drawList.end(); it++) {
-			(*it)->draw();
-		}
-		SDL_RenderPresent(renderer);
 		SDL_Event e;
 		while (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
 				running = false;
 			}
 		}
+		for (auto it = drawList.begin(); it != drawList.end(); it++) {
+			(*it)->draw();
+		}
+		SDL_RenderPresent(renderer);
+		
 	} else {
 		if (visible) {
 			if (makeWindow())
@@ -73,7 +75,10 @@ int Window::destroyWindow()
 	return (renderer || window);
 }
 
-void Window::isVisible(const bool set) { visible = set; };
+void Window::isVisible(const bool set) { 
+	visible = set; 
+	update();
+}
 
 void Window::resize(const int width, const int height)
 {
