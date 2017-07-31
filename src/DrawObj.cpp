@@ -20,7 +20,6 @@ void DrawObj::setRenderer(SDL_Renderer* renderer) { this->renderer = renderer; }
 void DrawObj::draw() 
 {
 	SDL_Rect destRect {xPosDraw, yPosDraw, widthDraw, heightDraw};
-	std::cout << destRect.x << ' ' << destRect.y << ' ' << destRect.w << ' ' << destRect.h << '\n';
 	SDL_RenderCopy(renderer, texture, NULL, &destRect);
 }
 
