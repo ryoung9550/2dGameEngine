@@ -20,7 +20,6 @@ void Texture::updateTextureSize()
 	file.read(inputBuffer, bufferSize);
 	textureW = inputBuffer[0x12] | (inputBuffer[0x13] << 8) | (inputBuffer[0x14] << 16) | (inputBuffer[0x15] << 24);
 	textureH = inputBuffer[0x16] | (inputBuffer[0x17] << 8) | (inputBuffer[0x18] << 16) | (inputBuffer[0x19] << 24);
-	std::cout << "Texture Width: " << textureW << "  Texture Height: " << textureH << "\n";
 }
 
 int Texture::createTexture(SDL_Renderer* renderer)
