@@ -16,7 +16,7 @@ public:
 	DrawObj(std::string);
 	~DrawObj();
 	void setRenderer(SDL_Renderer*);
-	void draw();
+	virtual void draw();
 	void moveRel(int i, int j);
 	void moveAbs(int i, int j);
 };
