@@ -1,5 +1,10 @@
 #include <SDL2/SDL.h>
+#include <string>
 #include "Sprite.hpp"
+
+Sprite::Sprite(const int& spriteWidth, const int& spriteHeight, const std::string& path) : DrawObj(path), spriteSizeW(spriteWidth), spriteSizeH(spriteHeight) {}
+
+void Sprite::setCurrentSprite(const int& spriteNum) { this->currentSprite = spriteNum; }
 
 void Sprite::setSpriteSize(const int& sizeW, const int& sizeH)
 {
